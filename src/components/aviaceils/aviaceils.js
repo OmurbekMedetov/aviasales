@@ -15,15 +15,15 @@ export default function Aviaceils() {
   const [menu, setMenu] = useState(false);
   return (
     <div>
-      <TransPlants active={menu} />
+      <img src={logo} alt="nooo" className={styles.img} />
       <nav className={styles.nav}>
         <div className={styles.burger} onClick={() => setMenu(!menu)}>
           <span className={styles.burger__span} />
         </div>
       </nav>
-      <img src={logo} alt="nooo" className={styles.img} />
       <Tabs defaultActiveKey="1">
         <Tabs.TabPane tab="САМЫЙ ДЕШЕВЫЙ" key="item-1">
+          <TransPlants active={menu} />
           <ul className={styles.container}>
             <AviaceilsItem />
           </ul>
