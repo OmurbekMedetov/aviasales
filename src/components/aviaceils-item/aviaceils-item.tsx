@@ -6,7 +6,7 @@ export default function AviaceilsItem() {
     <div>
       <li className={styles.container}>
         <div className={styles.price}>
-          <h2 className={styles.h2}>13400Р</h2>
+          <h2 className={styles.h2}>13 400 Р</h2>
           <img src={avias} alt="noo" className={styles.img} />
         </div>
         <div className={styles.div__table}>

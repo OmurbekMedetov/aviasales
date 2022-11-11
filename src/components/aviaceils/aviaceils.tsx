@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { Tabs } from 'antd';
 import { useState } from 'react';
 import AviaceilsItem from '../aviaceils-item/aviaceils-item';
@@ -9,10 +7,7 @@ import '../../index.scss';
 import TransPlants from '../transplants/transplants';
 
 export default function Aviaceils() {
-  //   const el = avia.map((items) => {
-  //     <AviaceilsItem key={items.key} />;
-  //   });
-  const [menu, setMenu] = useState(false);
+  const [menu, setMenu] = useState<boolean>(false);
   return (
     <div>
       <img src={logo} alt="nooo" className={styles.img} />
