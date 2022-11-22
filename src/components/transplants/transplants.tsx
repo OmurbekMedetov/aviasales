@@ -1,28 +1,11 @@
+import { useDispatch } from 'react-redux';
+import { MyTrans } from '../../redux/actions/action-types';
+import { useTypedSelector } from '../../redux/hooks/useTypedSelector';
 import styles from './transplants.module.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import { MyTrans } from '../redux-logic/action';
-function TransPlants({ active }) {
+
+export default function TransPlants({ active }: { active: boolean }) {
   const dispatch = useDispatch();
-  const allPlanet: boolean = useSelector((state) => state.all);
-  const withPlanet: boolean = useSelector((state) => state.noTransfer);
-  const onePlanet: boolean = useSelector((state) => state.oneTransfer);
-  const twoPlanet: boolean = useSelector((state) => state.twoTransfer);
-  const threePlanet: boolean = useSelector((state) => state.threeTransfer);
-  const allFunc = () => {
-    dispatch({ type: MyTrans.All });
-  };
-  const NoTrans = () => {
-    dispatch({ type: MyTrans.Without });
-  };
-  const OneTrans = () => {
-    dispatch({ type: MyTrans.OneFlight });
-  };
-  const TwoTrans = () => {
-    dispatch({ type: MyTrans.TwoFlight });
-  };
-  const ThreeTrans = () => {
-    dispatch({ type: MyTrans.ThreeFlight });
-  };
+  const transFormState = useTypedSelector((state) => state.transfers);
   return (
     <div className={active ? styles.div__container : styles.menu}>
       <ul className={styles.container__ul}>
@@ -30,27 +13,51 @@ function TransPlants({ active }) {
           <h3 className={styles.h3}>КОЛИЧЕСТВО ПЕРЕСАДОК</h3>
         </li>
         <li className={styles.container__li}>
-          <input type="checkbox" className={styles.input} checked={allPlanet} onClick={allFunc} />
+          <input
+            type="checkbox"
+            className={styles.input}
+            checked={transFormState.allTransfer}
+            onClick={() => dispatch({ type: MyTrans.AllTransfer })}
+          />
           <span className={styles.span}>Все</span>
         </li>
         <li className={styles.container__li}>
-          <input type="checkbox" className={styles.input} checked={withPlanet} onClick={NoTrans} />
+          <input
+            type="checkbox"
+            className={styles.input}
+            checked={transFormState.noTransfer}
+            onClick={() => dispatch({ type: MyTrans.NoTransfer })}
+          />
           <span className={styles.span}>Без пересадок</span>
         </li>
         <li className={styles.container__li}>
-          <input type="checkbox" className={styles.input} checked={onePlanet} onClick={OneTrans} />
+          <input
+            type="checkbox"
+            className={styles.input}
+            checked={transFormState.oneTransfer}
+            onClick={() => dispatch({ type: MyTrans.OneTransfer })}
+          />
           <span className={styles.span}>1 пересадка</span>
         </li>
         <li className={styles.container__li}>
-          <input type="checkbox" className={styles.input} checked={twoPlanet} onClick={TwoTrans} />
+          <input
+            type="checkbox"
+            className={styles.input}
+            checked={transFormState.twoTransfer}
+            onClick={() => dispatch({ type: MyTrans.TwoTransfer })}
+          />
           <span className={styles.span}>2 пересадки</span>
         </li>
         <li className={styles.container__li}>
-          <input type="checkbox" className={styles.input} checked={threePlanet} onClick={ThreeTrans} />
+          <input
+            type="checkbox"
+            className={styles.input}
+            checked={transFormState.threeTransfer}
+            onClick={() => dispatch({ type: MyTrans.ThreeTransfer })}
+          />
           <span className={styles.span}>3 пересадки</span>
         </li>
       </ul>
     </div>
   );
 }
-export default TransPlants;
