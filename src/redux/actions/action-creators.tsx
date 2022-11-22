@@ -1,13 +1,13 @@
-import { ITicket } from '../../types';
+// import { ITicket } from '../../types';
 import { MyTrans } from '../actions/action-types';
 
-interface TicketsType {
-  type: string;
-  payload: ITicket[];
-}
+// interface TicketsType {
+//   type: string;
+//   payload: ITicket[];
+// }
 
 export const tickedLoad = () => {
-  return async (dispath: TicketsType) => {
+  return async (dispath: any) => {
     const allTicket = [];
     const searchIds = await fetch('https://front-test.dev.aviasales.ru/search');
     const { searchId } = await searchIds.json();
